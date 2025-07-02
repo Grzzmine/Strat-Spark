@@ -1,0 +1,185 @@
+/* --- Variables & Style Global --- */
+:root {
+    --bg-dark: #12121c; /* Un bleu très sombre, presque noir */
+    --bg-light-dark: #1f1f2b; /* Un gris-bleu pour les cartes */
+    --primary-accent: #6a5acd; /* Un violet/bleu dynamique (SlateBlue) */
+    --text-primary: #f0f0f5; /* Un blanc cassé, plus doux pour les yeux */
+    --text-secondary: #a0a0b0; /* Un gris clair pour les textes secondaires */
+    --border-color: #333344;
+}
+
+/* Reset de base et police moderne */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    font-family: 'Inter', 'Poppins', sans-serif; /* Inter est très moderne et lisible */
+    background-color: var(--bg-dark);
+    color: var(--text-primary);
+    
+    /* ---- LA MAGIE POUR TOUT CENTRER ---- */
+    display: flex;
+    justify-content: center; /* Centre horizontalement */
+    align-items: center;     /* Centre verticalement */
+    padding: 2rem;
+}
+
+/* --- Conteneur Principal --- */
+.container {
+    width: 100%;
+    max-width: 650px; /* Limite la largeur sur les grands écrans */
+    text-align: center;
+}
+
+header {
+    margin-bottom: 2.5rem;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+header p {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+}
+
+/* --- Formulaire de Génération --- */
+.form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+}
+
+.form-container input {
+    background-color: var(--bg-light-dark);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1rem;
+    font-size: 1rem;
+    color: var(--text-primary);
+    outline: none;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.form-container input::placeholder {
+    color: var(--text-secondary);
+}
+
+.form-container input:focus {
+    border-color: var(--primary-accent);
+    box-shadow: 0 0 0 3px rgba(106, 90, 205, 0.3);
+}
+
+#generate-button {
+    background-color: var(--primary-accent);
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    padding: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+#generate-button:hover {
+    background-color: #5948b1; /* Un peu plus sombre au survol */
+    transform: translateY(-2px);
+}
+
+/* --- Loader & Résultats --- */
+#loader {
+    display: none; /* Changé de .hidden à display none */
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    padding: 2rem;
+}
+
+#results-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    text-align: left; /* On aligne le texte des cartes à gauche pour la lisibilité */
+}
+
+/* --- Carte de Résultat --- */
+.result-card {
+    background-color: var(--bg-light-dark);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1.5rem;
+    opacity: 0; /* Pour l'animation d'apparition */
+    transform: translateY(20px);
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 0.5px;
+}
+
+.card-header .format-icon {
+    font-size: 1.2rem;
+}
+
+.result-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+    color: var(--text-primary);
+}
+
+.result-card .description {
+    line-height: 1.6;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+}
+
+.pro-tip {
+    background-color: rgba(106, 90, 205, 0.1);
+    border-left: 3px solid var(--primary-accent);
+    padding: 1rem;
+    border-radius: 0 8px 8px 0;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.pro-tip strong {
+    color: var(--primary-accent);
+}
+
+/* Animation d'apparition des cartes */
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* --- Responsive pour les mobiles --- */
+@media (max-width: 768px) {
+    body {
+        padding: 1rem;
+        align-items: flex-start; /* On ne centre plus verticalement sur mobile pour plus d'espace */
+    }
+    header h1 {
+        font-size: 2rem;
+    }
+}

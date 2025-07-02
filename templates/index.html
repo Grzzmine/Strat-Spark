@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- IMPORTANT: Changement du titre et ajout de la police Google Fonts "Inter" -->
+    <title>Strat'Spark - Votre Générateur d'Idées</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <!-- On enveloppe tout dans un conteneur pour gérer la largeur et le centrage -->
+    <div class="container">
+        <header>
+            <!-- IMPORTANT: Changement du nom -->
+            <h1>Strat'Spark</h1>
+            <p>Transformez votre stratégie en contenu percutant.</p>
+        </header>
+
+        <main>
+            <div class="form-container">
+                <input type="text" id="sector-input" placeholder="Votre secteur d'activité (ex: coach sportif)">
+                <input type="text" id="theme-input" placeholder="Un thème précis (optionnel)">
+                <!-- L'ID du bouton reste le même -->
+                <button id="generate-button">Générer mes idées ✨</button>
+            </div>
+            
+            <!-- Le loader est mieux sans la classe 'hidden' ici, JS s'en chargera -->
+            <div id="loader">Génération de vos étincelles stratégiques...</div>
+            
+            <!-- IMPORTANT: J'ai renommé l'ID pour être plus générique -->
+            <div id="results-container">
+                <!-- Les cartes d'idées seront injectées ici par JavaScript -->
+            </div>
+        </main>
+    </div>
+        
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
